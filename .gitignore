@@ -1,5 +1,5 @@
-build.pem
-build.crx
+*.crx
+*.pem
+*.zip
 build
-build.zip
 node_modules

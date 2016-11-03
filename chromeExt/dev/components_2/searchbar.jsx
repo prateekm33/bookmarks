@@ -7,9 +7,7 @@ export default class SearchBar extends React.Component {
 
   render() {
     return (
-      <div id='search-bar-container'>
-        <input id='bookmark-search' placeholder="SEARCH"/>
-      </div>
+      <div></div>
     )
   }
 }

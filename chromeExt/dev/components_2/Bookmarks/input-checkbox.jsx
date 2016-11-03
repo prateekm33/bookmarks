@@ -6,7 +6,6 @@ export default class InputCheckbox extends React.Component {
   }
 
   componentDidMount() {
-    console.log('mounted inputs...')
     this.input.checked = this.props.bookmark.clicked
   }
 

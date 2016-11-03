@@ -60,7 +60,6 @@ class Bookmark extends React.Component {
 function mapStateToProps(state) {
   return { 
     toExport: state.toExport,
-    toIgnore: state.toIgnore,
     allSelected: state.allSelected
   }
 }

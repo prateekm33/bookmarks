@@ -14,7 +14,6 @@ class App extends React.Component {
 
   componentWillMount() {
     chrome.bookmarks.getTree(roots => {
-      console.log('root-', roots)
       const root = roots[0];
       this.props.dispatch(actions.initBookmarks(root));
     })

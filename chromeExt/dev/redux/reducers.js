@@ -15,8 +15,6 @@ export const reducer = function(state, action) {
 
 function selectAll(state, action) {
 
-  console.log(action.clicked, '---CLICKED action')
-
   const rootTitles = state.rootTitles.map(i => {
     let q = [i];
     while (q.length) {

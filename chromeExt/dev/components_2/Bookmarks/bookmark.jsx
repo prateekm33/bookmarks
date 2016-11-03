@@ -34,13 +34,20 @@ class Bookmark extends React.Component {
     })
   }
 
+  handleParentClicked(clickedState) {
+    this.setState({
+      clicked: clickedState
+    });
+  }
+
   render() {
 
     return (
       <div className="bookmark-container" ref={containerEl => this.containerEl = containerEl } >
         <InputCheckbox
           bookmark={this.props.bookmark}
-          parent={this.props.parent} />
+          parent={this.props.parent}
+          handleParentClicked={this.handleParentClicked.bind(this)} />
         <div className={this.state.className}
              onClick={this.showChildren.bind(this)}>
           {this.props.bookmark.title}
@@ -49,7 +56,7 @@ class Bookmark extends React.Component {
           this.state.showChildren ? 
             <RenderHTMLForChildren 
               bookmark={this.props.bookmark} 
-              parentClicked={this.props.bookmark.clicked} 
+              parentClicked={this.state.clicked} 
               parent={this.props.bookmark} /> : null
         }
       </div>

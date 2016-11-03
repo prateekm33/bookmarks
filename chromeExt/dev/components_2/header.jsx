@@ -66,8 +66,32 @@ export default class Header extends React.Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return state;
-// }
 
-// export default connect(mapStateToProps)(Header);
+/*
+  exportSelected() {
+    const data = [];
+
+    for (let id in this.state.toExport) {
+      chrome.bookmarks.getSubTree(id, a => {
+        data.push(a[0]);
+
+        if (!Object.keys(this.state.toExport).length) {
+          this.setState({ toExport: {} });
+
+          var blob = new Blob([JSON.stringify(data)], {type : 'octet/stream'});
+          blob = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.setAttribute('href', blob);
+          a.setAttribute('download', 'bookmarks.json');
+          a.click()
+          window.URL.revokeObjectURL(blob)
+        }
+      })
+
+      delete this.state.toExport[id];
+    }
+
+  }
+
+
+*/

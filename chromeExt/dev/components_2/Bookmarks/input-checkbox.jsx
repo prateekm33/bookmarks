@@ -36,7 +36,7 @@ function clickNodeAndChildren() {
   q = q.concat(node.children || []);
   const clicked = node.clicked = !node.clicked;
 
-  this.props.handleParentClicked(clicked);
+  this.props.forceRender();
 
   while (q.length) {
     node = q.shift();

@@ -1,0 +1,102 @@
+#app {
+  width: 600px;
+  position: relative;
+}
+
+#error-display {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+  color: #f52f2f;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+#success-display {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 14px;
+  color: green;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+#main-nav {
+  position: fixed;
+  background: white;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  height: 80px;
+  border-bottom: 3px solid blue;
+  margin-bottom: 10px;
+}
+#header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-size: 1.5em;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin: 10px 10px 10px 0px;
+}
+#title {
+  font-weight: bold;
+}
+
+
+
+#bookmark-search {
+  width: 400px;
+}
+
+
+
+
+#bookmarks-view {
+  margin-top: 100px;
+  width: 100%;
+}
+
+
+
+
+#file-options {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+#export-options, #import-options {
+  padding: 2px;
+}
+#export-options > * {
+  margin-right: 10px;
+}
+#import-success {
+  align-self: flex-end;
+}
+
+
+
+
+.bookmark {
+  border-bottom: 1px solid black;
+}
+.bookmark:hover {
+  cursor: pointer;
+}
+.folder {
+  font-weight: bold;
+}
+.url {
+  font-style: italic;
+}
+
+
+
+.bookmark-children {
+  padding: 10px;
+}

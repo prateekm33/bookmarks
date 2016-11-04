@@ -150,7 +150,13 @@ function closeDialogBox() {
 
 function generateExportTree() {
   const roots = this.props.rootTitles;
-  const newTree = new BookmarkTree('', 0, null, null);
+
+  const root = roots[0];
+  root.children = [...root.children, roots[1]];
+  // const newTree = new BookmarkTree(root.title, 0, [...root.children, roots[1]], null)
+
+
+  // const newTree = new BookmarkTree('', 0, null, null);
   function helper(node) {
     if (node.clicked) {
       let nodeChildren = null;
@@ -167,15 +173,17 @@ function generateExportTree() {
     return null;
   }
 
-  roots.forEach(root => { newTree.addChild(helper(root)) })
+  return helper(root);
 
-  return newTree;
+  // roots.forEach(root => { newTree.addChild(helper(root)) })
+
+  // return newTree;
 }
 
 
-function downloadExportFile(data) {
-  data = [data]
-  var blob = new Blob([JSON.stringify(data)], {type : 'octet/stream'});
+function downloadExportFile(bookmarkTree) {
+  bookmarkTree = [bookmarkTree]
+  var blob = new Blob([JSON.stringify(bookmarkTree)], {type : 'octet/stream'});
   blob = window.URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.setAttribute('href', blob);
@@ -183,32 +191,3 @@ function downloadExportFile(data) {
   a.click()
   window.URL.revokeObjectURL(blob)
 }
-
-/*
-  exportSelected() {
-    const data = [];
-
-    for (let id in this.state.toExport) {
-      chrome.bookmarks.getSubTree(id, a => {
-        data.push(a[0]);
-
-        if (!Object.keys(this.state.toExport).length) {
-          this.setState({ toExport: {} });
-
-          var blob = new Blob([JSON.stringify(data)], {type : 'octet/stream'});
-          blob = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.setAttribute('href', blob);
-          a.setAttribute('download', 'bookmarks.json');
-          a.click()
-          window.URL.revokeObjectURL(blob)
-        }
-      })
-
-      delete this.state.toExport[id];
-    }
-
-  }
-
-
-*/

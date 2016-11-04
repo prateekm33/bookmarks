@@ -153,10 +153,7 @@ function generateExportTree() {
 
   const root = roots[0];
   root.children = [...root.children, roots[1]];
-  // const newTree = new BookmarkTree(root.title, 0, [...root.children, roots[1]], null)
 
-
-  // const newTree = new BookmarkTree('', 0, null, null);
   function helper(node) {
     if (node.clicked) {
       let nodeChildren = null;
@@ -174,10 +171,6 @@ function generateExportTree() {
   }
 
   return helper(root);
-
-  // roots.forEach(root => { newTree.addChild(helper(root)) })
-
-  // return newTree;
 }
 
 

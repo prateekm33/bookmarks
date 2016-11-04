@@ -9,7 +9,6 @@ const finalcreateStore = compose(
 
 const defaultState = {
   rootTitles: [],
-  toExport : {},
   allSelected: false
 }
 

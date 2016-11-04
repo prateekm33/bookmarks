@@ -22,7 +22,9 @@ class App extends React.Component {
   render() {
     return (
       <div id='app'>
-        <Header dispatch={this.props.dispatch}/>
+        <Header 
+          dispatch={this.props.dispatch}
+          rootTitles={this.props.rootTitles} />
         <BookmarksView 
           bookmarks={this.props.rootTitles}
           allSelected={this.props.allSelected} />

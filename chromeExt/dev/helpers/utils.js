@@ -10,7 +10,7 @@ export const getTitles = function(node) {
   return arr;
 }
 
-export const createBookmarks = function(bookmarks, pId = "1") {
+export const createBookmarks = function(bookmarks, title,  pId = "1") {
   bookmarks.forEach(bmark => {
     bmark.parentId = pId;
     delete bmark.id;
@@ -19,11 +19,34 @@ export const createBookmarks = function(bookmarks, pId = "1") {
     delete bmark.children;
     delete bmark.dateGroupModified;
 
+    if (title) {
+      bmark.title = title;
+    }
+
     chrome.bookmarks.create(bmark, obj => {
-      console.log('success creating? ', obj.id);
       if (children) {
-        createBookmarks(children, obj.id);
+        createBookmarks(children, null, obj.id);
       }
     });
   })
+}
+
+export class BookmarkTree {
+  constructor(title, parentId, children, url) {
+    this.title = title;
+    this.parentId = String(parentId);
+    if (children) {
+      this.children = children;
+    }
+
+    if (url) {
+      this.url = url;
+    }
+  }
+
+  addChild(node) {
+    if (!node) { return null; }
+    this.children = this.children || [];
+    this.children.push(node)
+  }
 }

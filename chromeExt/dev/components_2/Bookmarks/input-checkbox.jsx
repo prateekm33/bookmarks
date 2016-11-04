@@ -15,7 +15,6 @@ export default class InputCheckbox extends React.Component {
 
   handleClick(evt) {
     clickNodeAndChildren.call(this)
-    updateBookmarkIgnore.call(this)
   }
 
   render() {
@@ -36,26 +35,12 @@ function clickNodeAndChildren() {
   q = q.concat(node.children || []);
   const clicked = node.clicked = !node.clicked;
 
-  this.props.forceRender();
 
   while (q.length) {
     node = q.shift();
     node.clicked = clicked;
     q = q.concat(node.children || []);
   }
-}
 
-function updateBookmarkIgnore() {
-  const parent = this.props.parent;
-  // (2) parent clicked
-  if (parent && parent.clicked) {
-    // add/remove bookmark to/from parent `ignore` prop
-    parent.ignore = parent.ignore || {}
-    if (parent.ignore[this.props.bookmark.id]) {
-      delete parent.ignore[this.props.bookmark.id];
-    } else {
-      parent.ignore[this.props.bookmark.id] = this.props.bookmark;
-    }
-  }
- 
+  this.props.forceRender(clicked);
 }

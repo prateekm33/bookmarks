@@ -154,6 +154,10 @@ function generateExportTree() {
   const root = roots[0];
   root.children = [...root.children, roots[1]];
 
+  if (roots[1].clicked) {
+    root.clicked = true;
+  }
+
   function helper(node) {
     if (node.clicked) {
       let nodeChildren = null;
